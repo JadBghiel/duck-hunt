@@ -6,28 +6,38 @@
 */
 #include "../include/my_hunter.h"
 
+void initialize_basic_bird_params(bird_params_t *params, sfVideoMode mode)
+{
+    params->sprite = create_sprite("./rsrc/flappy_sprite_sheet.png");
+    params->speed = 7.0f;
+    params->pos_x = -32;
+    params->pos_y = 300;
+    params->window_width = mode.width;
+    params->is_dead = false;
+    params->frame_count = 3;
+    params->spawn_time = 0.0f;
+    params->mode = mode;
+    params->rect = (sfIntRect){0, 0, 174, 122};
+    params->clock = sfClock_create();
+    params->score = 0;
+}
+
+void initialize_score_components(bird_params_t *params)
+{
+    params->font = sfFont_createFromFile("./rsrc/font_joystick.otf");
+    params->score_text = sfText_create();
+    params->soundtrack = init_soundtrack("./rsrc/able_sisters.ogg");
+    sfText_setFont(params->score_text, params->font);
+    sfText_setCharacterSize(params->score_text, 75);
+    sfText_setFillColor(params->score_text, sfBlack);
+}
+
 bird_params_t initialize_bird_params(sfVideoMode mode)
 {
     bird_params_t params = {0};
 
-    params.sprite = create_sprite("./rsrc/flappy_sprite_sheet.png");
-    params.speed = 7.0f;
-    params.pos_x = -32;
-    params.pos_y = 300;
-    params.window_width = mode.width;
-    params.is_dead = false;
-    params.frame_count = 3;
-    params.spawn_time = 0.0f;
-    params.mode = mode;
-    params.rect = (sfIntRect){0, 0, 174, 122};
-    params.clock = sfClock_create();
-    params.score = 0;
-    params.font = sfFont_createFromFile("./rsrc/font_joystick.otf");
-    params.score_text = sfText_create();
-    params.soundtrack = init_soundtrack("./rsrc/able_sisters.ogg");
-    sfText_setFont(params.score_text, params.font);
-    sfText_setCharacterSize(params.score_text, 75);
-    sfText_setFillColor(params.score_text, sfBlack);
+    initialize_basic_bird_params(&params, mode);
+    initialize_score_components(&params);
     return params;
 }
 
