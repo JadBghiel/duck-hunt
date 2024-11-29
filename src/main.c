@@ -9,7 +9,7 @@
 void initialize_basic_bird_params(bird_params_t *params, sfVideoMode mode)
 {
     params->sprite = create_sprite("./rsrc/flappy_sprite_sheet.png");
-    params->speed = 7.0f;
+    params->speed = 12.0f;
     params->pos_x = -32;
     params->pos_y = 300;
     params->window_width = mode.width;

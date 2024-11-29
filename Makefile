@@ -12,7 +12,6 @@ SRC = src/main.c \
 	src/manage_sprite.c \
 	src/terminate.c \
 	src/extra_features.c \
-	src/scale_handling.c \
 	src/lib/my_putstr.c \
 	src/lib/my_strcmp.c \
 	src/lib/my_putchar.c \
