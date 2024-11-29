@@ -27,15 +27,22 @@ int game_loop(sfRenderWindow *window, sfEvent *event, sfSprite *background,
     return 0;
 }
 
-void handle_mouse_click(sfEvent *event, bird_params_t *params)
+void handle_mouse_click(sfRenderWindow *window, sfEvent *event,
+    bird_params_t *params)
 {
     sfFloatRect bounds;
+    sfVector2f mouse_world_pos;
     sfTexture *dead_texture;
+    sfVector2i mouse_pixel_pos;
 
     if (event->mouseButton.button == sfMouseLeft) {
+        mouse_pixel_pos.x = event->mouseButton.x;
+        mouse_pixel_pos.y = event->mouseButton.y;
+        mouse_world_pos = sfRenderWindow_mapPixelToCoords(window,
+            mouse_pixel_pos, NULL);
         bounds = sfSprite_getGlobalBounds(params->sprite);
-        if (sfFloatRect_contains(&bounds, event->mouseButton.x,
-            event->mouseButton.y) && !params->is_dead) {
+        if (sfFloatRect_contains(&bounds, mouse_world_pos.x,
+            mouse_world_pos.y) && !params->is_dead) {
             params->is_dead = true;
             dead_texture = sfTexture_createFromFile("./rsrc/dead.png", NULL);
             sfSprite_setTexture(params->sprite, dead_texture, sfTrue);
@@ -53,7 +60,7 @@ int manage_events(sfRenderWindow *window, sfEvent *event,
             return 1;
         }
         if (event->type == sfEvtMouseButtonPressed) {
-            handle_mouse_click(event, params);
+            handle_mouse_click(window, event, params);
         }
     }
     return 0;

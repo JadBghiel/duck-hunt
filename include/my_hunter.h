@@ -26,9 +26,8 @@ typedef struct {
     sfText *score_text;
     sfFont *font;
     bool is_game_over;
+    sfMusic *soundtrack;
 } bird_params_t;
-
-//function prototype below
 
 //manage_sprit.c:
 sfSprite *create_sprite(char *filepath);
@@ -46,16 +45,17 @@ void terminate(sfRenderWindow *window, sfSprite *background, sfSprite *bird,
 void display_info(void);
 int convert_int_to_str(int score, char *buffer);
 int score(sfRenderWindow *window, bird_params_t *params);
+sfMusic *init_soundtrack(const char *file_path);
 
 //manage_events.c:
 int game_loop(sfRenderWindow *window, sfEvent *event, sfSprite *background,
     bird_params_t *params);
-void handle_mouse_click(sfEvent *event, bird_params_t *params);
+void handle_mouse_click(sfRenderWindow *window, sfEvent *event,
+    bird_params_t *params);
 int manage_events(sfRenderWindow *window, sfEvent *event,
     bird_params_t *params);
 
 //main.c:
 bird_params_t initialize_bird_params(sfVideoMode mode);
 
-//scale_handling.c:
 #endif /* MY_HUNTER */

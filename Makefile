@@ -23,7 +23,7 @@ OBJ = $(SRC:.c=.o)
 
 NAME = my_hunter
 
-LDFLAGS = -lcsfml-graphics -lcsfml-window -lcsfml-system
+LDFLAGS = -lcsfml-graphics -lcsfml-window -lcsfml-system -lcsfml-audio
 
 $(NAME): $(OBJ)
 	$(CC)	-o	$(NAME)	$(OBJ)	$(LDFLAGS)	-g

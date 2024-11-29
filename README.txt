@@ -6,14 +6,11 @@ and anything more works too)
 KNOWN ISSUES:
 - the sprite sheet appears for a short moment in the top left corner everytime
     the birds dies
-- cant kill when not in fullscreen
-- memory leaks: need to free amap
-
+- init function in main.c > 20l
 
 TODO:
 - game over
 - death animation
-- implement score of the player
 - all time high score
 - sounds
 - diff levels: 3 levels, slow, medium, fast 

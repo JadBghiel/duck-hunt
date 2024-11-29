@@ -42,6 +42,14 @@ static void destroy_window(sfRenderWindow *window)
     }
 }
 
+static void destroy_soundtrack(sfMusic *soundtrack)
+{
+    if (soundtrack) {
+        sfMusic_stop(soundtrack);
+        sfMusic_destroy(soundtrack);
+    }
+}
+
 void terminate(sfRenderWindow *window, sfSprite *background, sfSprite *bird,
     bird_params_t *params)
 {
@@ -49,4 +57,5 @@ void terminate(sfRenderWindow *window, sfSprite *background, sfSprite *bird,
     destroy_sprite(bird);
     destroy_bird_params(params);
     destroy_window(window);
+    destroy_soundtrack(params->soundtrack);
 }

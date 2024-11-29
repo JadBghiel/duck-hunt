@@ -24,6 +24,7 @@ bird_params_t initialize_bird_params(sfVideoMode mode)
     params.score = 0;
     params.font = sfFont_createFromFile("./rsrc/font_joystick.otf");
     params.score_text = sfText_create();
+    params.soundtrack = init_soundtrack("./rsrc/able_sisters.ogg");
     sfText_setFont(params.score_text, params.font);
     sfText_setCharacterSize(params.score_text, 75);
     sfText_setFillColor(params.score_text, sfBlack);

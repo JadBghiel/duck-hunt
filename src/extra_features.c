@@ -52,3 +52,12 @@ int score(sfRenderWindow *window, bird_params_t *params)
     free(buffer);
     return 0;
 }
+
+sfMusic *init_soundtrack(const char *file_path)
+{
+    sfMusic *music = sfMusic_createFromFile(file_path);
+
+    sfMusic_setLoop(music, sfTrue);
+    sfMusic_play(music);
+    return music;
+}
