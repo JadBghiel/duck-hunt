@@ -40,16 +40,12 @@ int convert_int_to_str(int score, char *buffer)
 
 int score(sfRenderWindow *window, bird_params_t *params)
 {
-    char *buffer = malloc(10 * sizeof(char));
+    char buffer[12];
 
-    if (!buffer) {
-        return 84;
-    }
     my_strcpy(buffer, "Score : ");
     convert_int_to_str(params->score, buffer + 8);
     sfText_setString(params->score_text, buffer);
     sfRenderWindow_drawText(window, params->score_text, NULL);
-    free(buffer);
     return 0;
 }
 
